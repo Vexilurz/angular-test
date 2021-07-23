@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 export interface Post {
   title: string
@@ -12,12 +13,16 @@ export interface Post {
 })
 export class AppComponent {
 
-  search = ''
-  searchField: keyof Post = 'title'
-  
-  posts: Post[] = [
-    {title: 'Beer', text: 'Best beer ever'},
-    {title: 'Bread', text: 'asd qr qw fsdfeqwf qqwd qwd  fd'},
-    {title: 'JS', text: 'asfdgweewg rw  weff ewfd wef we'},
-  ]
+  p: Promise<string> = new Promise<string>(resolve => {
+    setTimeout(() => {
+      resolve('promise resolved')
+    }, 4000);
+  })
+
+  date: Observable<Date> = new Observable(obs => {
+    setInterval(()=>{
+      obs.next(new Date())
+    },1000)
+  })
+
 }
