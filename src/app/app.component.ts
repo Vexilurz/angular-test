@@ -21,4 +21,9 @@ export class AppComponent {
   updatePosts(post: IPost) {
     this.posts.unshift(post)    
   }
+
+  removePost(id: number) {
+    console.log('Id to remove', id);    
+    this.posts = this.posts.filter(p => p.id !== id)
+  }
 }
