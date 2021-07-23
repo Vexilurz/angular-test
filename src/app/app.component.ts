@@ -7,10 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   
-  title = 'initial'
-
-  // onInput(event: any) {
-  //   this.title = event.target.value
-  // }
+  bgToggle = false
 
 }

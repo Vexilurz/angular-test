@@ -1,4 +1,11 @@
 <h1>Hello</h1>
 
-<input type="text" [(ngModel)]="title">
-<p>{{title}}</p>
+<button (click)="bgToggle = !bgToggle">Toggle</button>
+
+<div [ngStyle]="{
+  width: '200px',
+  height: '200px',
+  borderRadius: '5px',
+  border: '1px solid #ccc',
+  background: bgToggle ? 'red' : 'cyan'
+}"></div>
