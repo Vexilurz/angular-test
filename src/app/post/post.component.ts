@@ -8,7 +8,7 @@ import { IPost } from '../app.component';
 })
 export class PostComponent implements OnInit {
 
-  @Input('myPost')
+  @Input()
   post!: IPost;
 
   constructor() { }
