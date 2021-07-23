@@ -1,21 +1,9 @@
 <h1>Hello</h1>
 
-<button (click)="bgToggle = !bgToggle">Toggle</button>
+<button (click)="toggle = !toggle">Toggle</button>
 
-<!-- <div [ngStyle]="{
-  width: '200px',
-  height: '200px',
-  borderRadius: '5px',
-  border: '1px solid #ccc',
-  background: bgToggle ? 'red' : 'cyan'
-}"></div> -->
+<p *ngIf="toggle; else cyanP" class="red">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti, molestias!</p>
 
-<p [ngClass]="{
-  red: bgToggle,
-  cyan: !bgToggle
-}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, officia?</p>
-
-<p
-  [class.cyan]="!bgToggle"
-  [class.red]="bgToggle"
->Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, corrupti.</p>
+<ng-template #cyanP>
+  <p class="cyan">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, impedit!</p>
+</ng-template>
