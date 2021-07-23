@@ -1,10 +1,11 @@
-import { Component, ContentChild, ElementRef, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, ContentChild, ElementRef, Input, OnInit, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { IPost } from '../app.component';
 
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
-  styleUrls: ['./post.component.scss']
+  styleUrls: ['./post.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PostComponent implements OnInit {
 
