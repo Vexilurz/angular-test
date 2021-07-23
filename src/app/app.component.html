@@ -1,23 +1,12 @@
 <div class="container">
   
-  <h1>Angular directives</h1>
+  <h1>Angular pipes</h1>
 
-  <p appStyle="red" [dStyles]="{border: '1px solid blue', borderRadius: '5px'}">
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta, alias!
+  <p>
+    {{ e | number:'1.1-5' }}
   </p>
-  <p appStyle="blue" [dStyles]="{border: '1px solid red', borderRadius: '15px'}">
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta, alias!
+  <p>
+    {{ e | number:'3.1-2' }}
   </p>
-
-  <button class="btn" (click)="isVisible = !isVisible">Toggle</button>
-  <!-- <ng-template [ngIf]="isVisible">
-    <div class="wrap">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos totam doloribus sed reprehenderit, voluptatum eum consequuntur molestias ab commodi inventore.</p>
-    </div>
-  </ng-template> -->
-
-  <div class="wrap" *appIfnot="!isVisible">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos totam doloribus sed reprehenderit, voluptatum eum consequuntur molestias ab commodi inventore.</p>
-  </div>
 
 </div>
