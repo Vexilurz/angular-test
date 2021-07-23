@@ -17,12 +17,26 @@ export class AppComponent {
     }
   }
 
-  img = 'https://seeklogo.com/images/R/react-logo-7B3CE81517-seeklogo.com.png'
+  inputValue = ''
+
+  // img = 'https://seeklogo.com/images/R/react-logo-7B3CE81517-seeklogo.com.png'
 
   constructor() {
-    setTimeout(()=>{
-      console.log('timeout is over')
-      this.img = 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/240px-Angular_full_color_logo.svg.png'
-    }, 5000)
+    // setTimeout(()=>{
+    //   console.log('timeout is over')
+    //   this.img = 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/240px-Angular_full_color_logo.svg.png'
+    // }, 5000)
+  }
+  
+  onInput(event: KeyboardEvent) {
+    this.inputValue = (<HTMLInputElement>event.target).value
+  }
+
+  onBlur(str: string) {
+    this.inputValue = str+str
+  }
+
+  onClick() {
+    console.log('click');    
   }
 }

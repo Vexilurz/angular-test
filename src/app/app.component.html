@@ -1,11 +1,14 @@
 <h1>Hello</h1>
 
-<!-- <p>{{title}}</p>
-<p><strong>{{number + 8}}</strong></p>
-<p>{{arr}}</p>
-<p>{{obj}}</p> -->
+<button (click)="onClick()">Click me</button>
 
-<img [src]="img" alt="">
+<input 
+  type="text" 
+  (keyup)="onInput($event)" 
+  (blur)="onBlur(myInput.value)"
+  #myInput
+>
+<p><strong>{{inputValue}}</strong></p>
 
 <hr>
 
