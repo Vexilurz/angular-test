@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   todos: Todo[] = [];
   todoTitle = '';
   loading = false;
+  error = '';
 
   constructor(private todosService: TodosService) { } 
 
@@ -38,6 +39,8 @@ export class AppComponent implements OnInit {
       .subscribe(todos => {
         this.todos = todos;
         this.loading = false;
+      }, error => {
+        this.error = error.message;         
       })
   }
 
