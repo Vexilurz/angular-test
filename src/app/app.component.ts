@@ -1,4 +1,4 @@
-import { animate, state, style, transition, trigger, group, query, keyframes } from '@angular/animations';
+import { animate, state, style, transition, trigger, group, query, keyframes, AnimationEvent } from '@angular/animations';
 import { Component } from '@angular/core'
 
 @Component({
@@ -71,6 +71,16 @@ export class AppComponent {
 
   animate() {
     this.boxState = this.boxState === 'end' ? 'start' : 'end'
+  }
+
+  animationStart(event: AnimationEvent) {
+    console.log('started', event);
+    
+  }
+
+  animationDone(event: AnimationEvent) {
+    console.log('done', event);
+    
   }
 
 }

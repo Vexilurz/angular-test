@@ -7,8 +7,10 @@
 <div class="wrap">
   <div 
     class="box"
-    [@box]="boxState"
     *ngIf="visible"
+    [@box]="boxState"
+    (@box.start)="animationStart($event)"
+    (@box.done)="animationDone($event)"
   >
     <h4>
       {{boxState | uppercase}}
