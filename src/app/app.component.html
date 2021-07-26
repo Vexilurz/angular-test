@@ -80,7 +80,7 @@
       </div>
     </div>
 
-    <button class="btn" type="submit" [disabled]="form.invalid">Отправить</button>
+    <button class="btn" type="submit" [disabled]="form.invalid || form.pending">Отправить</button>
 
   </form>
 </div>
