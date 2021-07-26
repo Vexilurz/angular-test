@@ -20,6 +20,9 @@
         <small *ngIf="form.get('email')?.errors?.email"> 
           Enter correct email
         </small>
+        <small *ngIf="form.get('email')?.errors?.restrictedEmail"> 
+          Email {{form.get('email')?.value}} in blacklist
+        </small>
       </div>
     </div>
 
