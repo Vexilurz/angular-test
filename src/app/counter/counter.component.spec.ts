@@ -1,3 +1,4 @@
+import { FormBuilder } from "@angular/forms"
 import { CounterComponent } from "./counter.component"
 
 describe('CounterComponent', () => {
@@ -5,7 +6,7 @@ describe('CounterComponent', () => {
   let component: CounterComponent
   
   beforeEach(() => {
-    component = new CounterComponent()
+    component = new CounterComponent(new FormBuilder())
   })
 
 
@@ -26,6 +27,17 @@ describe('CounterComponent', () => {
     })
     component.increment();
     expect(result).toBe(1)
+  })
+
+  it('should create form with 2 controls', () => {
+    expect(component.form.contains('login')).toBeTruthy()
+    expect(component.form.contains('email')).toBeTruthy()
+  })
+
+  it('should mark login as invalid if empty value', () => {
+    const control = component.form.get('login');
+    control?.setValue('')
+    expect(control?.valid).toBeFalsy()
   })
 
 })
