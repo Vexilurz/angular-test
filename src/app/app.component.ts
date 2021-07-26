@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent {
 
-  constructor(
-  ) {
+  form: FormGroup;
 
+  constructor() {
+    this.form = new FormGroup({})
   }
 
+  submit() {
+    console.log('Form submitted', this.form);
+    
+  }
 }
