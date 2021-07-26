@@ -32,4 +32,23 @@ export class AppComponent {
       console.log('Form data', formData);
     }
   }
+
+  setCapital() {
+    interface ICityMap {
+      ru: string
+      ua: string
+      by: string
+    }
+    const cityMap: ICityMap = {
+      ru: 'Moscow',
+      ua: 'Kiev',
+      by: 'Minsk'
+    }
+    const cityKey: keyof ICityMap = this.form.get('address')?.get('country')?.value
+    const city = cityMap[cityKey];
+    this.form.patchValue({
+      address: {city}
+    })
+    
+  }
 }
