@@ -3,17 +3,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { SwitchComponent } from './switch/switch.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SwitchComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule
+    FormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
