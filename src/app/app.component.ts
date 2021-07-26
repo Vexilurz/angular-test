@@ -1,4 +1,4 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger, group } from '@angular/animations';
 import { Component } from '@angular/core'
 
 @Component({
@@ -38,10 +38,16 @@ import { Component } from '@angular/core'
         style({
           opacity: 1
         }),
-        animate(750, style({
-          opacity: 0,
-          transform: 'scale(1.5)'
-        }))
+        group([
+          animate(750, style({
+            opacity: 0,
+            transform: 'scale(1.5)'
+          })),
+          animate(300, style({
+            color: 'black',
+            fontWeight: 'bold'
+          }))
+        ])
       ])
     ])
   ]
