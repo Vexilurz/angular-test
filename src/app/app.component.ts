@@ -17,8 +17,6 @@ export class AppComponent {
         Validators.email, 
         Validators.required,
         MyValidators.restrictedEmails
-      ], [
-        MyValidators.uniqEmail
       ]),
       password: new FormControl(null, [
         Validators.required, Validators.minLength(6)
@@ -36,6 +34,8 @@ export class AppComponent {
       console.log('Form submitted', this.form);
       const formData = {...this.form.value}
       console.log('Form data', formData);
+
+      this.form.reset();
     }
   }
 
