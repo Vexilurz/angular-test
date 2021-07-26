@@ -1,7 +1,7 @@
-import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpEventType, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, throwError } from "rxjs";
-import { catchError, delay } from "rxjs/operators";
+import { catchError, delay, map, tap } from "rxjs/operators";
 
 export interface Todo {
   completed: boolean;
@@ -24,15 +24,19 @@ export class TodosService {
     })
   }
 
-  fetchTodos(): Observable<Todo[]> {
+  fetchTodos(): Observable<Todo[] | null> {
     let params = new HttpParams();
     params = params.append('_limit', '4');
     params = params.append('custom', 'shit');
 
-    return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos', {
-      params
+    return this.http.get<Todo[] | null>('https://jsonplaceholder.typicode.com/todos', {
+      params,
+      observe: 'response'
     })
       .pipe(
+        map(response => {
+          return response.body;
+        }),
         delay(1000),
         catchError(error => {
           console.log(error.message);    
@@ -41,13 +45,27 @@ export class TodosService {
       )
   }
 
-  removeTodo(id: number | undefined): Observable<void> {
-    return this.http.delete<void>(`https://jsonplaceholder.typicode.com/todos/${id}`)
+  removeTodo(id: number | undefined): Observable<any> {
+    return this.http.delete<void>(`https://jsonplaceholder.typicode.com/todos/${id}`, {
+      observe: 'events'
+    }).pipe(
+      tap(event => {
+        if (event.type === HttpEventType.Sent) {
+          console.log('sent', event);          
+        }
+        if (event.type === HttpEventType.Response) {
+          console.log('response', event);          
+        }
+      })
+    )
   }
 
-  completeTodo(id: number | undefined): Observable<Todo> {
+  completeTodo(id: number | undefined): Observable<any> {
     return this.http.put<Todo>(`https://jsonplaceholder.typicode.com/todos/${id}`, {
       completed: true
+    }, {
+      // @ts-ignore
+      responseType: 'text'
     })
   }
 }

@@ -9,7 +9,7 @@ import { Todo, TodosService } from './todos.service';
 })
 export class AppComponent implements OnInit {
 
-  todos: Todo[] = [];
+  todos: Todo[] | null | undefined = [];
   todoTitle = '';
   loading = false;
   error = '';
@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
     }
     this.todosService.addTodo(newTodo)
       .subscribe(todo => {
-        this.todos.push(todo);
+        this.todos?.push(todo);
         this.todoTitle='';
       })
   }
@@ -47,13 +47,15 @@ export class AppComponent implements OnInit {
   removeTodo(id: number | undefined) {
     this.todosService.removeTodo(id)
       .subscribe(() => {
-        this.todos = this.todos.filter(t => t.id !== id)        
+        this.todos = this.todos?.filter(t => t.id !== id)        
       })
   }
 
   completeTodo(id: number | undefined) {
     this.todosService.completeTodo(id)
       .subscribe(todo => {
+        todo = JSON.parse(todo)
+        
         // @ts-ignore
         this.todos.find(t => t.id === todo.id)?.completed = true;        
       })
